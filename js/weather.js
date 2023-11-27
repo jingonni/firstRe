@@ -42,7 +42,7 @@ function onSucces(position) {
     }else{ // tempSel이 존재하지만 값이 "celci"가 아닌 경우
         temperature.innerText = data.main.temp;
     }
-    city.innerText = data.name;
+    
     });
 }
 
