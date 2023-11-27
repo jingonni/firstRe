@@ -26,10 +26,50 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    filter: brightness(90%);
+}
+
+.link:hover {
+    animation: blink 0.3s infinite alternate;
+}
+  
+@keyframes blink {
+    0% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(150%);
+    }
 }
 
 .link_svg {
     text-align: center;
+}
+
+.padding {
+    padding: 10px 0px;
+}
+
+.link_modal, .linkadd_modal {
+    width: 300px;
+    height: auto;
+    position: fixed;
+    background-color: white;
+    top: 90px;
+    left: 20px;
+    padding: 20px;
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .weather {

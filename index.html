@@ -10,11 +10,41 @@
     <div id="main">
         <div id="container" class="container">
 
-            <div class="link">
+            <!-- 모달 -->
+            <div id="linkaddModal" class="linkadd_modal" style="display: none;">
+                <div class="modal-content">
+                <!-- 모달 내용 -->
+                    <div class="row">
+                        <div>Creating a link</div>
+                        <div class="close" onclick="closelinkaddModal()">&times;</div>
+                    </div>
+                    <div class="padding">Title</div>
+                    <input id="title" class="padding" type="text" />
+                    <div class="padding">Links</div>
+                    <input id="link" class="padding" type="text" />
+                    <div class="padding"><button onclick="submitlink()">눌러줄래?</button></div>
+                </div>
+            </div>
+
+            <!-- 모달 -->
+            <div id="myModal" class="link_modal" style="display: none;">
+                <div class="modal-content">
+                <!-- 모달 내용 -->
+                    <div class="row">
+                        <div onclick="openlinkaddModal()">링크 추가</div>
+                        <div class="close" onclick="closeModal()">&times;</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 링크 -->
+            <div class="link" onclick="openModal()">
                 <div class="link_svg">
                     <img src="svg/link.svg" alt="SVG Image" style="width: 30px; height: 30px; color: white;"/>
-                    <div>link</div>
                 </div>
+                <ul id="link_ul">
+
+                </ul>
             </div>
 
 
@@ -64,4 +94,73 @@
     <script src="js/todo.js"></script>
 
 </body>
+<script>
+    const TITLE_LINK = "titlelink";
+    let Title_Link_array = []
+    window.onload = function() {
+        const lstitlelink = localStorage.getItem(TITLE_LINK);
+        if(lstitlelink !== null) {
+            const parseLstitlelink = JSON.parse(lstitlelink);
+            Title_Link_array = parseLstitlelink
+            parseLstitlelink.forEach(element => displaylinktitle(element));
+        }
+    }
+
+    const displaylinktitle = (arg) => {
+        const liqw = document.getElementById('link_ul'); // ul 요소 가져오기
+        const li = document.createElement("li"); // li 요소 생성
+        li.innerText = arg.title; // li 요소의 id 설정
+
+        const span = document.createElement("span"); // span 요소 생성
+        span.innerText = arg.link; // span 요소의 텍스트 내용 설정
+
+        liqw.appendChild(li); // ul 요소에 li 요소 추가
+        liqw.appendChild(span)
+    }
+
+    // 모달 열기
+    function openModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'block';
+    }
+
+    // 모달 닫기
+    function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+    }
+
+    // 모달 외부 클릭 시 닫기
+    window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+    }
+
+    function openlinkaddModal() {
+        const linkaddmodal = document.getElementById('linkaddModal');
+        linkaddmodal.style.display = 'block';
+        const modal = document.getElementById('myModal');
+        modal.style.display = 'none';
+    }
+
+    // 모달 닫기
+    function closelinkaddModal() {
+        const linkaddmodal = document.getElementById('linkaddModal');
+        linkaddmodal.style.display = 'none';
+    }
+
+    function submitlink() {
+        const title_link = {
+        title : document.querySelector("#linkaddModal #title").value,
+        link : document.querySelector("#linkaddModal #link").value
+        };
+        Title_Link_array.push(title_link);
+        localStorage.setItem(TITLE_LINK, JSON.stringify(Title_Link_array));
+        displaylinktitle(title_link);
+        document.querySelector("#linkaddModal #title").value = ''
+        document.querySelector("#linkaddModal #link").value = ''
+    }
+</script>
 </html>
