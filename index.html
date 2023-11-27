@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>인덱스</title>
 </head>
 <body>
-    <form id="Login">
-        <input required maxlength="10" type="text" id="name" placeholder="이름넣어줘">
-        <input id ="btnLogin" type="submit" value="Loing" />
-    </form>
-        <h1 id="h1" class="hidden"></h1>
-        <h1 id="clock"></h1>
-        <select id="clockWatch">
-            <option value="24">24시간 방식</option>
-            <option value="12">12시간 방식</option>
-        </select>
-        <div id="quote">
-            <span></span><br/>
-            <span></span>
+    <div id="main">
+        <div id="container" class="container">
+
+            <div class="link">
+                <div class="link_svg">
+                    <img src="svg/link.svg" alt="SVG Image" style="width: 30px; height: 30px; color: white;"/>
+                    <div>link</div>
+                </div>
+            </div>
+
+
+            <div></div>
+            <div id="weather" class="weather">
+                <span>날씨</span>
+                <span>온도</span>
+                <div>지역</div>
+            </div>
+            <div>1</div>
+            <div>
+                <div id="clock" class="clock"> 00:00:00 </div>
+                <select 
+                <select id="clockWatch">
+                    <option value="24">24시간 방식</option>
+                    <option value="12">12시간 방식</option>
+                </select>
+                    <form id="Login" class="hidden">
+                        <input type="text" id="name" placeholder="당신의 이름을 적어주세요" required maxlength="10">
+                        <input type="submit" value="Login" />
+                    </form>
+                    <h1 id="h1" class="login"></h1>
+                </div>
+            </div>
+            <div>1</div>
+        </div>   
+
+
+        <div id="quote" class="quote">
+            <span>명언</span>
+            <span>작가</span>
         </div>
-        
-        <div id="weather">
-            <span>날씨</span>
-            <span>온도</span>
-            <span>지역</span>
-        </div>
-        <form id ="frmToDo">
-            <input type="text" placeholder="할 일을 적고 엔터키를 누르세요" required />
+        <!-- toDo 리스트 -->
+        <form id="frmToDo">
+            <input type="text" placeholder="할 일을 적고 엔터키를 누르세요." required />
         </form>
-    
+
         <ul id="lstToDo">
-    
+            <!-- <li>
+                <span>밥먹기</span>
+            </li>
+            <li>잠자기</li> -->
         </ul>
-        <script src='script.js'></script>
-        <script src='timer.js'></script>
-        <script src="quotes.js"></script>
-        <script src="background.js"></script>
-        <script src="weather.js"></script>-
-        <script src="frmtodo.js"></script>
+    </div> 
+
+    <script src='js/script.js'></script>
+    <script src='js/timer.js'></script>
+    <script src='js/quotes.js'></script>
+    <script src='js/background.js'></script>
+    <script src='js/weather.js'></script>
+    <script src="js/todo.js"></script>
+
 </body>
 </html>
