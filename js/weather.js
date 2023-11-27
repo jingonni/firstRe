@@ -15,20 +15,35 @@ function onSucces(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     console.log(`당신이 위치한 곳은 위도 ${latitude}, 경도 ${longitude} 입니다.`);
-   
+    
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
 
     fetch(url)
-        .then(response => response.json())
-        .then(data => {            
-            console.log(data.name, data.weather[0].description, data.main.temp);
-            const weather = document.querySelector("#weather span:first-child");
-            const temperature = document.querySelector("#weather span:nth-child(2)");
-            const city = document.querySelector("#weather div:last-child");
-            weather.innerText = data.weather[0].description;
-            temperature.innerText = Math.round(data.main.temp-273.15) + '°';
+    .then(response => response.json())
+    .then(data => {  
+        console.log(data.name, data.weather[0].description, data.main.temp);
+        const weather = document.querySelector("#weather span:first-child");
+        const temperature = document.querySelector("#weather span:nth-child(2)");
+        const city = document.querySelector("#weather div:last-child");
+        weather.innerText = data.weather[0].description;
+        /*
+        if(tempSel.value == "celci"){
+            temperature.innerText = Math.round(data.main.temp-273.15) + '°C';
             city.innerText = data.name;
-        });
+        }else{
+        temperature.innerText = data.main.temp+ '°';
+        city.innerText = data.name;
+    }
+    */
+    const tempSel = document.getElementById("temp"); // tempSel 변수를 정의하고, 해당 요소를 참조합니다.
+
+    if(tempSel.value === "celci"){ // tempSel이 존재하고, 그 값이 "celci"인 경우
+        temperature.innerText = Math.round(data.main.temp-273.15) + '°C';
+    }else{ // tempSel이 존재하지만 값이 "celci"가 아닌 경우
+        temperature.innerText = data.main.temp;
+    }
+    city.innerText = data.name;
+    });
 }
 
 function onFail() {
