@@ -43,4 +43,4 @@ if (localUsername === null){
 }
 
 //버튼 이벤트리스너 등록
-// loginForm.addEventListener("submit",clickLogin);
+loginForm.addEventListener("submit",clickLogin);

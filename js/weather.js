@@ -24,9 +24,9 @@ function onSucces(position) {
             console.log(data.name, data.weather[0].description, data.main.temp);
             const weather = document.querySelector("#weather span:first-child");
             const temperature = document.querySelector("#weather span:nth-child(2)");
-            const city = document.querySelector("#weather span:last-child");
+            const city = document.querySelector("#weather div:last-child");
             weather.innerText = data.weather[0].description;
-            temperature.innerText = data.main.temp-273.15;
+            temperature.innerText = Math.round(data.main.temp-273.15) + '°';
             city.innerText = data.name;
         });
 }
