@@ -50,7 +50,7 @@ body {
     padding: 10px 0px;
 }
 
-.link_modal, .linkadd_modal {
+.linkadd_modal {
     width: 300px;
     height: auto;
     position: fixed;
@@ -59,6 +59,19 @@ body {
     left: 20px;
     padding: 20px;
     display: flex;
+    z-index: 9999;
+}
+
+.link_modal {
+    width: 300px;
+    height: auto;
+    position: fixed;
+    background-color: white;
+    top: 90px;
+    left: 20px;
+    padding: 20px;
+    display: flex;
+    z-index: 9998;
 }
 
 .modal-content {
